@@ -1,0 +1,56 @@
+{
+    "manifest_version": 3,
+    "name": "Omini - AI Pet Assistant",
+    "description": "Your personalized AI pet assistant powered by Gemini Nano.",
+    "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "assets/astronaut.png",
+            "48": "assets/astronaut.png",
+            "128": "assets/astronaut.png"
+        }
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "style.css"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/*"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "icons": {
+        "16": "assets/astronaut.png",
+        "48": "assets/astronaut.png",
+        "128": "assets/astronaut.png"
+    }
+}

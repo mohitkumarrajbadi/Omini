@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omini</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="omini" id="omini">
+    <div id="setup">
+        <h1>Choose Your AI Pet</h1>
+        <div class="pets-slider">
+            <div class="pet-item" id="monkey">
+                <img src="assets/pet_monkey.png" class="pet" alt="Monkey" id="monkey">
+                <p>Sir Bananacutie</p> <!-- Changed from "Monkey" -->
+            </div>
+            <div class="pet-item" id="dog">
+                <img src="assets/pet_dog.png" class="pet" alt="Dog" id="dog">
+                <p>Ruff Ruff McSniff</p> <!-- Changed from "Dog" -->
+            </div>
+            <div class="pet-item" id="cat">
+                <img src="assets/pet_cat.png" class="pet" alt="Cat" id="cat">
+                <p>Meowsterious</p> <!-- Changed from "Cat" -->
+            </div>
+            <div class="pet-item" id="gorilla">
+                <img src="assets/pet_gorilla.png" class="pet" alt="Gorilla" id="gorilla">
+                <p>Gorillaz</p> <!-- Changed from "Gorilla" -->
+            </div>
+            <div class="pet-item" id="cow">
+                <img src="assets/pet_cow.png" class="pet" alt="Cow" id="cow">
+                <p>Moo-tini</p> <!-- Changed from "Cow" -->
+            </div>
+            <div class="pet-item" id="fox">
+                <img src="assets/pet_fox.png" class="pet" alt="Fox" id="fox">
+                <p>Foxy McFurball</p> <!-- Changed from "Fox" -->
+            </div>
+            <div class="pet-item" id="tiger">
+                <img src="assets/pet_tiger.png" class="pet" alt="Tiger" id="tiger">
+                <p>Tony the Tiger</p> <!-- Changed from "Tiger" -->
+            </div>
+        </div>
+        <div class="bottom-section">
+            <input type="text" id="userName" placeholder="Enter your name">
+            <button id="saveBtn"><i class="fas fa-save"></i> Save</button>
+        </div>
+    </div>
+    
+
+    <div id="main" style="display: none;">
+        <h1 id="greeting"></h1>
+        <img id="chosenPet" class="chosen-pet" alt="Pet">
+        <div class="options">
+            <button id="talkBtn"><i class="fas fa-comment"></i> Chat</button>
+            <button id="rewriteBtn"><i class="fas fa-edit"></i> Rewrite</button>
+            <button id="translateBtn"><i class="fas fa-language"></i> Translate</button>
+            <!-- <button id="playBtn"><i class="fas fa-gamepad"></i> Play</button> -->
+        </div>
+    </div>
+
+    <div id="chatContainer" class="chat-container" style="display: none;">
+        <div class="chat-container-heading">
+            <button id="backBtn" class="chat-button"><i class="fas fa-arrow-left"></i></button>
+            <h2>Chat with your pet</h2>
+            <img id="mainChosenPet" class="chosen-pet" alt="Pet">
+        </div>
+        <div id="chatHistory" class="chat-history"></div>
+        <div class="chat-input-section">
+            <input type="text" id="chatMessage" placeholder="Type your message..." />
+            <button id="sendBtn" class="chat-button"><i class="fas fa-paper-plane"></i></button>
+            <button id="clearChatBtn" class="chat-button chat-clear"><i class="fas fa-trash-alt"></i></button>
+        </div>
+    </div>
+
+
+    <div id="translateContainer" class="translator-container" style="display: none;">
+        <header class="translator-header">
+          <button id="backTranslateBtn" class="translator-btn"><i class="fas fa-arrow-left"></i></button>
+          <h2 class="translator-title">The Translator</h2>
+          <img id="translateChosenPet" class="translator-icon" alt="Pet" />
+        </header>
+        
+        <div id="languageSelectorContainer" class="translator-settings">
+          <!-- Language selector will be injected here -->
+        </div>
+        
+        <footer class="translator-footer">
+          <input type="text" id="translateMessage" placeholder="Type your message..." />
+          <div class="translator-buttons">
+            <button id="translateSendBtn" class="translator-btn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </footer>
+        
+        <div id="translateHistory" class="translator-history">
+          <!-- Translation history will appear here -->
+        </div>
+      </div>
+      
+
+    <div id="rewriteContainer" style="display: none;">
+
+        <div class="chat-container-heading">
+            <button id="backToMainRewrite" class="chat-button"><i class="fas fa-arrow-left"></i></button>
+            <h2>Rewrite you Message</h2>
+            <img id="rewriteChosenPet" class="chosen-pet" alt="Pet">
+        </div>
+    
+        <div id="rewrite-container-body">
+            <label for="rewritePrompt">Prompt:</label>
+            <textarea id="rewritePrompt" placeholder="Enter your text to rewrite"></textarea>
+        
+            <label for="rewriteContext">Context:</label>
+            <textarea id="rewriteContext" placeholder="Enter context (optional)"></textarea>
+        
+            <button id="rewriteButton">Write</button>
+        
+            <div id="rewriteResponseContainer" style="margin-top: 20px; display: none;">
+                <h3>Response</h3>
+                <p id="rewriteResponse"></p>
+        
+                <button id="copyResponse"><i class="fas fa-copy"></i> Copy</button>
+        
+                <div style="margin-top: 10px;">
+                    <label for="rewriteTone">Change Tone:</label>
+                    <select id="rewriteTone">
+                        <option value="formal">Formal</option>
+                        <option value="casual">Casual</option>
+                        <option value="persuasive">Persuasive</option>
+                    </select>
+        
+                    <label for="rewriteLength">Change Length:</label>
+                    <select id="rewriteLength">
+                        <option value="short">Short</option>
+                        <option value="medium">Medium</option>
+                        <option value="long">Long</option>
+                    </select>
+        
+                    <!-- Rewrite Again Button -->
+                    <button id="rewriteAgainButton">Rewrite Again</button>
+                </div>
+            </div>
+        </div>
+    
+        
+    </div>
+    
+    
+    <script src="popup.js"></script>
+</body>
+
+</html>
